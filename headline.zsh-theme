@@ -74,16 +74,16 @@ IS_SSH=$? # 0=true, 1=false
 
 # Info sources (enclose in single quotes as these will be eval'd, use empty string to hide segment)
 HEADLINE_USER_CMD='echo $USER'
-HEADLINE_HOST_CMD='hostname -s' # consider 'basename "$VIRTUAL_ENV"' to replace host with environment
+HEADLINE_HOST_CMD='echo $HOST' # consider 'basename "$VIRTUAL_ENV"' to replace host with environment
 HEADLINE_PATH_CMD='print -rP "%~"'
 HEADLINE_GIT_BRANCH_CMD='headline_git_branch'
 HEADLINE_GIT_STATUS_CMD='headline_git_status'
 
 # Info symbols (optional)
-HEADLINE_USER_PREFIX='' # consider " "
-HEADLINE_HOST_PREFIX='' # consider " "
-HEADLINE_PATH_PREFIX='' # consider " "
-HEADLINE_BRANCH_PREFIX='' # consider " "
+HEADLINE_USER_PREFIX='󰆥 ' # consider " "
+HEADLINE_HOST_PREFIX='󰌽 ' # consider " "
+HEADLINE_PATH_PREFIX='  ' # consider " "
+HEADLINE_BRANCH_PREFIX=' ' # consider " "
 
 # Info joints
 HEADLINE_USER_BEGIN=''
@@ -121,7 +121,7 @@ HEADLINE_INFO_MODE=precmd # precmd|prompt (whether info line is in PROMPT or pri
 HEADLINE_LINE_MODE=on # on|auto|off (whether to print the line above the prompt)
 
 # Separator character
-HEADLINE_LINE_CHAR='_' # repeated for line above information
+HEADLINE_LINE_CHAR='▁' # repeated for line above information
 
 # Separator styles
 HEADLINE_STYLE_JOINT_LINE=$HEADLINE_STYLE_JOINT
@@ -144,7 +144,7 @@ HEADLINE_GIT_AHEAD='↑'
 HEADLINE_GIT_DIVERGED='↕'
 HEADLINE_GIT_STASHED='*'
 HEADLINE_GIT_CONFLICTS='✘' # consider "%{$red%}✘"
-HEADLINE_GIT_CLEAN='' # consider "✓" or "✔"
+HEADLINE_GIT_CLEAN='󰄳 ' # consider "✓" or "✔"
 
 # Git status options
 HEADLINE_DO_GIT_STATUS_COUNTS=false # set "true" to show count of each status
