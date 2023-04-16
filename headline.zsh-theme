@@ -152,7 +152,7 @@ HEADLINE_DO_GIT_STATUS_OMIT_ONE=false # set "true" to omit the status number whe
 
 # Prompt
 HEADLINE_PROMPT='%(#.#.%(!.!.$)) ' # consider "%#"
-HEADLINE_RPROMPT=''
+#HEADLINE_RPROMPT=''
 
 # Clock (prepends to RPROMPT)
 HEADLINE_DO_CLOCK=false # whether to show the clock
@@ -358,6 +358,15 @@ headline_preexec() {
   fi
 }
 
+# Virtual envinronment case
+handle_virtual_env() {
+  if [[ -z "$VIRTUAL_ENV" ]]; then
+    echo ''
+  else
+    echo '$(basename $VIRTUAL_ENV)  '
+  fi
+}
+
 # Before prompting
 add-zsh-hook precmd headline_precmd
 headline_precmd() {
@@ -479,7 +488,8 @@ headline_precmd() {
   if [[ $HEADLINE_DO_CLOCK == 'true' ]]; then
     RPROMPT='%{$HEADLINE_STYLE_CLOCK%}$(date +$HEADLINE_CLOCK_FORMAT)%{$reset%}$HEADLINE_RPROMPT'
   else
-    RPROMPT=$HEADLINE_RPROMPT
+    # RPROMPT=$HEADLINE_RPROMPT
+    RPROMPT=$(handle_virtual_env)
   fi
 }
 
